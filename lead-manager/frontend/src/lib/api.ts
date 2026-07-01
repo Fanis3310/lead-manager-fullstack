@@ -33,3 +33,24 @@ export interface Lead {
     }
     return res.json();
   }
+
+  export async function updateLead(id: string, data: CreateLeadData): Promise<Lead> {
+    const res = await fetch(`${API_BASE}/leads/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to update lead");
+    }
+    return res.json();
+  }
+
+  export async function deleteLead(id: string): Promise<void> {
+    const res = await fetch(`${API_BASE}/leads/${id}`, { method: "DELETE" });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to delete lead");
+    }
+  }

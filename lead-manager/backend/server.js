@@ -14,7 +14,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Middleware (allows the frontend and backend to communicate)
 app.use(cors({
   origin: FRONTEND_URL,
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 app.use(express.json({ limit: '10kb' }));
 
@@ -71,6 +71,61 @@ app.get('/leads', async (req, res) => {
     res.status(200).json(leads);
   } catch (error) {
     console.error('GET /leads error:', error);
+    res.status(500).json({ error: 'Something went wrong. Please try again later.' });
+  }
+});
+
+// ENDPOINT 3: Update a lead (PUT /leads/:id)
+app.put('/leads/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Invalid lead ID.' });
+    }
+
+    const { name, email, status } = req.body;
+    const validationError = validateLeadInput({ name, email, status });
+    if (validationError) {
+      return res.status(400).json({ error: validationError });
+    }
+
+    const updateData = {
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      ...(status ? { status } : {}),
+    };
+
+    const updated = await Lead.findByIdAndUpdate(id, updateData, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updated) {
+      return res.status(404).json({ error: 'Lead not found.' });
+    }
+    res.status(200).json(updated);
+  } catch (error) {
+    if (error.code === 11000) {
+      return res.status(400).json({ error: 'This email is already registered.' });
+    }
+    console.error('PUT /leads/:id error:', error);
+    res.status(500).json({ error: 'Something went wrong. Please try again later.' });
+  }
+});
+
+// ENDPOINT 4: Delete a lead (DELETE /leads/:id)
+app.delete('/leads/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Invalid lead ID.' });
+    }
+    const deleted = await Lead.findByIdAndDelete(id);
+    if (!deleted) {
+      return res.status(404).json({ error: 'Lead not found.' });
+    }
+    res.status(200).json({ message: 'Lead deleted.' });
+  } catch (error) {
+    console.error('DELETE /leads/:id error:', error);
     res.status(500).json({ error: 'Something went wrong. Please try again later.' });
   }
 });
