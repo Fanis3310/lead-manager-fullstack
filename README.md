@@ -26,8 +26,6 @@ A full-stack lead management dashboard built with Next.js 16, Express, and Mongo
 
 </div>
 
-> **Tip:** Add your screenshots to a `screenshots/` folder in the repo root. Name them `light.png` and `dark.png` (or update the paths above).
-
 ---
 
 ## ✨ Features
@@ -154,6 +152,40 @@ npm run dev
 ### 3. Open the App
 
 Navigate to **[http://localhost:3000](http://localhost:3000)** — you're ready to manage leads!
+
+### Installed Packages
+
+<details>
+<summary><strong>Backend Dependencies</strong></summary>
+
+| Package | Version | Purpose |
+|:--------|:--------|:--------|
+| `express` | ^5.2.1 | HTTP server |
+| `mongoose` | ^9.7.3 | MongoDB ODM |
+| `cors` | ^2.8.6 | Cross-origin requests |
+| `dotenv` | ^17.4.2 | Environment variables |
+
+</details>
+
+<details>
+<summary><strong>Frontend Dependencies</strong></summary>
+
+| Package | Version | Purpose |
+|:--------|:--------|:--------|
+| `next` | 16.2.9 | React framework |
+| `react` | 19.2.4 | UI library |
+| `react-dom` | 19.2.4 | React DOM renderer |
+| `shadcn` | ^4.12.0 | UI component library |
+| `radix-ui` | ^1.6.1 | Headless UI primitives |
+| `lucide-react` | ^1.22.0 | Icons |
+| `tailwindcss` | ^4 | CSS framework |
+| `class-variance-authority` | ^0.7.1 | Variant management |
+| `clsx` | ^2.1.1 | Class utilities |
+| `tailwind-merge` | ^3.6.0 | Tailwind class merging |
+| `tw-animate-css` | ^1.4.0 | Animation utilities |
+| `typescript` | ^5 | Type checking |
+
+</details>
 
 ---
 
