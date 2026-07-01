@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 Lead Manager
+# 📊 Lead Manager
 
 A full-stack lead management dashboard built with Next.js 16, Express, and MongoDB.
 
@@ -10,7 +10,6 @@ A full-stack lead management dashboard built with Next.js 16, Express, and Mongo
 [![Express](https://img.shields.io/badge/Express-5.x-000?logo=express)](https://expressjs.com)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?logo=mongodb)](https://mongodb.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript)](https://typescriptlang.org)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 </div>
 
@@ -105,20 +104,24 @@ lead-manager/
 
 ---
 
-## 🚀 Getting Started
+## ⚡ Getting Started
 
 ### Prerequisites
 
 - **Node.js** ≥ 18
 - **MongoDB Atlas** account ([free tier works](https://mongodb.com/atlas))
 
-### 1. Clone & Setup Backend
+### 1. Clone the Repo
 
 ```bash
 git clone https://github.com/Fanis3310/lead-manager-fullstack.git
-cd lead-manager-fullstack/lead-manager/backend
+cd lead-manager-fullstack
+```
 
-# Create your .env file
+### 2. Backend Setup
+
+```bash
+cd lead-manager/backend
 cp .env.example .env
 ```
 
@@ -137,19 +140,19 @@ npm run dev
 
 > ✅ Backend running at **http://localhost:8080**
 
-### 2. Setup Frontend
+### 3. Frontend Setup
 
-Open a **second terminal**:
+Open a **second terminal** from the repo root (`lead-manager-fullstack`):
 
 ```bash
-cd lead-manager-fullstack/lead-manager/frontend
+cd lead-manager/frontend
 npm install
 npm run dev
 ```
 
 > ✅ Frontend running at **http://localhost:3000**
 
-### 3. Open the App
+### 4. Open the App
 
 Navigate to **[http://localhost:3000](http://localhost:3000)** — you're ready to manage leads!
 
@@ -202,12 +205,6 @@ Navigate to **[http://localhost:3000](http://localhost:3000)** — you're ready 
 ## 👤 Author
 
 **Fanis3310** — [GitHub](https://github.com/Fanis3310)
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
